@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jarvis"
+version = "0.1.0"
+description = "Multi-agent LLM system for solving the GAIA benchmark"
+requires-python = ">=3.11"
+dependencies = [
+    # Core LangGraph / LangChain
+    "langgraph>=0.3",
+    "langchain>=0.3",
+    "langchain-core>=0.3",
+    "langchain-community>=0.3",
+    "langchain-experimental>=0.3",
+    "langchain-ollama>=0.3",
+    "langchain-google-genai>=2.0",
+
+    # Tools & document loaders
+    "tavily-python>=0.5",
+    "pypdf>=4.0",
+    "openpyxl>=3.1",
+    "unstructured[xlsx]>=0.15",
+    "beautifulsoup4>=4.12",
+    "requests>=2.31",
+    "Pillow>=10.0",
+    "pydub>=0.25",
+
+    # Data loading
+    "datasets>=3.0",
+    "huggingface-hub>=0.24",
+
+    # Config & CLI
+    "pydantic>=2.0",
+    "pydantic-settings>=2.0",
+    "typer>=0.12",
+    "python-dotenv>=1.0",
+
+    # Utilities
+    "pandas>=2.0",
+    "rich>=13.0",
+    "tenacity>=8.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+]
+
+[project.scripts]
+jarvis = "jarvis.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
